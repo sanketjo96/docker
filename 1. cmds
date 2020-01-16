@@ -1,0 +1,3 @@
+1. docker container run -d -p 3306:3306 --name db -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+2. docker container logs db // ieCei9ieCh8aeghapheicae5isho6fiy
+3. docker container run -d --name webserver -p 8080:80 httpd
