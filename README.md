@@ -1,4 +1,6 @@
 # docker
+- DAY 1
+
 - Day 2 
     - CMDs
         - docker ps - containers in running state
@@ -12,3 +14,9 @@
         - docker images
 
     - Docker hub maintains hash per image to identify images uniquely
+
+- DAY 3
+    - Vol mapping -
+    - Optimization base - use source image wisely
+    - Multilayer docker file 
+
