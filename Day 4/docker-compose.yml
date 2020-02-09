@@ -1,0 +1,53 @@
+version: "2.0"
+services: 
+  user-db:
+    environment: 
+      MYSQL_DATABASE: user-service
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: admin
+    image: mysql:5.5
+    ports: 
+    - "3307:3306"
+  product-db:
+    environment: 
+      MYSQL_DATABASE: product-service
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: admin
+    image: mysql:5.5
+    ports: 
+    - "3308:3306"
+  review-db:
+    environment: 
+      MYSQL_DATABASE: review-service
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: admin
+    image: mysql:5.5
+    ports: 
+    - "3309:3306"
+  user-service:
+    image: sanketjoshi/user-service:3.0
+    ports:
+    - 9000:9000
+    depends_on:
+    - user-db
+  product-service:
+    image: sanketjoshi/product-service:1.0
+    ports:
+    - 9001:9001
+    depends_on:
+    - product-db
+  review-service:
+    image: sanketjoshi/review-service:1.0
+    ports:
+    - 9002:9002
+    depends_on:
+    - user-db
+
+
+
+
+
+

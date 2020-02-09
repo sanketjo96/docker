@@ -69,3 +69,4 @@
     - Maintaining multiple commands for multiple container is bit too much
     - Here comes docker compose. A tool for writing multiple container with single file
     - Its a YML file which maintains all configuration (essentially things from your COMMANDS)
+    - Lets try out DAY 3 container with single docker compose file
