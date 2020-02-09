@@ -1,0 +1,28 @@
+# Create multilayer docker image for react web application
+# 1. Clone the source code from https://github.com/dipurane/react-sample.git
+# 2. Create a dockerfile to compile the source files/folders using npm (node package manager)
+# a. Dockerfile should have parent node:alpine3.10
+# b. Only folders like src,public & file package.json should be part of Docker image
+# c. Compile the code using "npm install"
+# d. Build the code using "npm run build"
+# 4. Check at what location your build folder is generated.
+# 5. Build a new layer in same Dockerfile to have source as nginx:latest
+# 6. Copy content of Layer1 i.e. build folder generated in #4 inside new docker layer refer Assignment 2's Dockerfile for reference.
+# 7. Expose port 80 and while running map it to port 8888 on your local host.
+# 8. Observe the image size.
+# 9. Run the application locally and see if you can access react application at http://localhost:8888
+# 10. Push your image to docker hub
+
+From node:alpine3.10 as build
+
+RUN mkdir -p /app/react-code
+WORKDIR /app/react-code
+COPY . /app/react-code
+
+RUN npm install
+RUN npm run build
+
+FROM nginx:latest 
+RUN mkdir -p /app/build
+COPY --from=build /app/react-code/build/ /usr/share/nginx/html
+EXPOSE 80
