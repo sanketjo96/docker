@@ -50,3 +50,22 @@
             - docker image history <image id>
         - All above steps are not for compressing image but its for merging image to one layer so that pushing and pulling will be fast
 
+    - Networking
+        - Containers cant talk to each other by default
+            - docker run -d -p 8080:80 ngnix
+        - I am able to curl ngnix from laptop but can I do so from other container ?
+            - docker run -it alpine /bin/sh
+
+        - Networks - Bridge, Overlay
+            - Bridge - Its restricted to machine on which you are running
+                - docker network create --driver bridge starlink
+
+            - Register above container for starlink network now
+                - docker run -d -p 8080:80 --name my-nginx --network starlink nginx
+                - docker container run -it --name alpine-sank --network starlink alpine /bin/sh
+            - Communication should be possible with IP address now ? But ip can change then ? Docker lets you use name as well
+
+- DAY 4
+    - Maintaining multiple commands for multiple container is bit too much
+    - Here comes docker compose. A tool for writing multiple container with single file
+    - Its a YML file which maintains all configuration (essentially things from your COMMANDS)

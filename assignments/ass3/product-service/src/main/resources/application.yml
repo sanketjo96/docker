@@ -1,0 +1,19 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    database-platform : org.hibernate.dialect.MySQL5Dialect
+    show-sql : true
+    generate-ddl : true
+    hibernate:
+      ddl-auto : update
+  datasource:
+    url : jdbc:mysql://product-db:3306/product-service
+    username : admin
+    password : admin
+    driver-class-name : com.mysql.jdbc.Driver
+    testOnBorrow : true
+    validationQuery : SELECT 1
+
+server:
+   port: 9001
