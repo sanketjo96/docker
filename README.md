@@ -41,5 +41,12 @@
         - We can reduce it and ship as a single layer (most of the docker images on docker hub are in these class).
         - Steps
             - Build some image
-            - Ru 
+            - Run that image to form container
+            - docker container ls
+            - Spot the container id
+            - docker export <container id> > <somename>.tar (Creating a single layer compressed file from container)
+            - cat <somename>.tar | docker import -  <new name to image>
+            - docker image -a (note the new image id)
+            - docker image history <image id>
+        - All above steps are not for compressing image but its for merging image to one layer so that pushing and pulling will be fast
 
